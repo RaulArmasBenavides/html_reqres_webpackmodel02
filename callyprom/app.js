@@ -1,3 +1,4 @@
+import {obtenerChiste} from  './js/http-provider'
 // promesa que permite resolver si un número es igual a 10 o no let x =10 ;
 
 // const p = new  Promise((resolve,reject)=>{
@@ -22,21 +23,21 @@
 
 
 //CALLBACK
-const heroes = {
-    capi: {
-        nombre: 'Capitán América',
-        poder : 'Aguantar inyecciones sin morir'
-    },
-    iron: {
-        nombre: 'Ironman',
-        poder : 'Absurda cantidad de dinero'
-    },
-    spider: {
-        nombre: 'Spiderman',
-        poder : 'La mejor reacciona alériga'
-    }
+// const heroes = {
+//     capi: {
+//         nombre: 'Capitán América',
+//         poder : 'Aguantar inyecciones sin morir'
+//     },
+//     iron: {
+//         nombre: 'Ironman',
+//         poder : 'Absurda cantidad de dinero'
+//     },
+//     spider: {
+//         nombre: 'Spiderman',
+//         poder : 'La mejor reacciona alériga'
+//     }
 
-};
+// };
 
 //callback buscarheroe
 // const buscarHeroe = (id,callback) => 
@@ -60,20 +61,20 @@ const heroes = {
 
 
 //promesa buscar héroe
-const buscarHeroe = ( id ) => {
+// const buscarHeroe = ( id ) => {
     
-    const heroe = heroes[id];
+//     const heroe = heroes[id];
 
-    return new Promise( ( resolve, reject ) => {
-        if( heroe ) {
+//     return new Promise( ( resolve, reject ) => {
+//         if( heroe ) {
             
-            setTimeout(() => resolve( heroe ), 1000);
+//             setTimeout(() => resolve( heroe ), 1000);
 
-        } else {
-            reject(`No existe un héroe con el id ${ id }`);
-        }
-    });
-}
+//         } else {
+//             reject(`No existe un héroe con el id ${ id }`);
+//         }
+//     });
+// }
 
 
 
@@ -101,48 +102,76 @@ const buscarHeroe = ( id ) => {
 
 
 //await 
-const obtenerHeroeAwait = async( id ) => {
+// const obtenerHeroeAwait = async( id ) => {
 
-    try {
+//     try {
 
-        const heroe = await buscarHeroeAsync( id );
-        return heroe;
+//         const heroe = await buscarHeroeAsync( id );
+//         return heroe;
 
-    }catch( err ) {
-        console.log( 'CATCH!!!' );
-        return {
-            nombre: 'Sin nombre',
-            poder: 'Sin poder'
-        };
+//     }catch( err ) {
+//         console.log( 'CATCH!!!' );
+//         return {
+//             nombre: 'Sin nombre',
+//             poder: 'Sin poder'
+//         };
 
-    }
-}
+//     }
+// }
 
-const buscarHeroeAsync = async( id ) => {
+// const buscarHeroeAsync = async( id ) => {
     
-    const heroe = heroes[id];
+//     const heroe = heroes[id];
 
-    if( heroe ) {
-        return heroe;
-    } else {
-        throw `No existe un héroe con el id ${ id }`;
-    }
-}
+//     if( heroe ) {
+//         return heroe;
+//     } else {
+//         throw `No existe un héroe con el id ${ id }`;
+//     }
+// }
 
-const heroesIds = ['capi','iron','spider'];
-const heroesPromesas = heroesIds.map( buscarHeroe );
+// const heroesIds = ['capi','iron','spider'];
+// const heroesPromesas = heroesIds.map( buscarHeroe );
 
- const heroesCiclo = async () => {
+//  const heroesCiclo = async () => {
 
-    console.time('HeroesCiclo');
-    // heroesPromesas.forEach( async(p) => console.log( await p ));
-    for await( const heroe of heroesPromesas ) {
-        console.log(heroe);
-    }
-    console.timeEnd('HeroesCiclo');
-    // const heroes = await Promise.all( heroesPromesas );
-    // heroes.forEach( heroe => console.log(heroe) );
-}
+//     console.time('HeroesCiclo');
+//     // heroesPromesas.forEach( async(p) => console.log( await p ));
+//     for await( const heroe of heroesPromesas ) {
+//         console.log(heroe);
+//     }
+//     console.timeEnd('HeroesCiclo');
+//     // const heroes = await Promise.all( heroesPromesas );
+//     // heroes.forEach( heroe => console.log(heroe) );
+// }
 
-obtenerHeroeAwait('iron');
-heroesCiclo();
+// obtenerHeroeAwait('iron');
+// heroesCiclo();
+
+
+//import { obtenerChiste } from './js/http-provider';
+//import 'css/styles.css';
+//import 'css/bootstrap.css';
+//import { init } from "./js/chistes-page";
+
+
+
+
+
+//fetch(jokeURL).then( resp =>{
+ //  resp.json().then( data => {
+
+//    console.log(data.id);
+//    console.log(data.value);
+//   });
+//});
+
+
+
+obtenerChiste().then(console.log);
+// obtenerChiste().then(console.log);
+
+//getUsuario(1).then();
+
+
+//init();
