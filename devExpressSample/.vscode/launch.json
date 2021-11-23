@@ -1,0 +1,15 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Open textarea.html",
+            "file": "c:\\Users\\raula\\OneDrive - BW2 Technologies AG\\Documents\\documents\\rep\\personal\\javascripts\\wysiwyg-editor-master\\html\\popular\\textarea.html"
+        }
+    ]
+}
