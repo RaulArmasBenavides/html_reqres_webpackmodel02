@@ -1,61 +1,46 @@
-$(() => {
-    const data = complaintsData.sort((a, b) => b.count - a.count);
-    const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);
-    let cumulativeCount = 0;
-    const dataSource = data.map((item) => {
-      cumulativeCount += item.count;
-      return {
-        descripcion: item.complaint,
-        count: item.count,
-        cumulativePercentage: Math.round((cumulativeCount * 100) / totalCount),
-      };
-    });
-  
-    $('#chart').dxChart({
-      dataSource,
-      title: 'Pizza Shop Complaints',
-      valueAxis: [{
-        name: 'frequency',
-        position: 'left',
-        tickInterval: 300,
-      }, {
-        name: 'percentage',
-        position: 'right',
-        showZero: true,
-        label: {
-          customizeText(info) {
-            return `${info.valueText}%`;
-          },
+import { dxChart } from "https://cdn3.devexpress.com/jslib/21.2.3/js/dx.all.js";
+
+const populationData = [{
+  arg: 1960,
+  val: 3032019978,
+}, {
+  arg: 1970,
+  val: 3683676306,
+}, {
+  arg: 1980,
+  val: 4434021975,
+}, {
+  arg: 1990,
+  val: 5281340078,
+}, {
+  arg: 2000,
+  val: 6115108363,
+}, {
+  arg: 2010,
+  val: 6922947261,
+}, {
+  arg: 2020,
+  val: 7795000000,
+}];
+
+
+let options = {
+    dataSource: populationData,
+    legend: {
+      visible: false,
+    },
+    series: {
+      type: 'bar',
+    },
+    argumentAxis: {
+      tickInterval: 10,
+      label: {
+        format: {
+          type: 'decimal',
         },
-        constantLines: [{
-          value: 80,
-          color: '#fc3535',
-          dashStyle: 'dash',
-          width: 2,
-          label: { visible: false },
-        }],
-        tickInterval: 20,
-        valueMarginsEnabled: false,
-      }],
-      commonSeriesSettings: {
-        argumentField: 'descripcion',
       },
-      series: [{
-        type: 'bar',
-        valueField: 'count',
-        axis: 'frequency',
-        name: 'Complaint frequency',
-        color: '#fac29a',
-      }, {
-        type: 'spline',
-        valueField: 'cumulativePercentage',
-        axis: 'percentage',
-        name: 'Porcentaje acumulado',
-        color: '#6b71c3',
-      }],
-      legend: {
-        verticalAlignment: 'bottom',
-        horizontalAlignment: 'center',
-      },
-    });
-  });
+    },
+    title: 'World Population by Decade',
+  };
+
+  new DevExpress.viz.dxChart(document.getElementById('chart'), options);
