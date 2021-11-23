@@ -87,7 +87,7 @@
         <h1>Textarea</h1>
         <p>The editor can also be initialized on a textarea.</p>
         <h1>Hola Mundo</h1>
-        <canvas id="test" width="1950" height="600"><canvas>
+        <canvas id="test" width="1950" height="450"><canvas>
         
       </textarea>
 
@@ -186,25 +186,12 @@ let a ,b ;
 <script src="js/domvas.js"></script>
 <script src="js/domvas.min.js"></script>
 <script>
-      function downloadtable2() 
-      {		
-       console.log('intentando dibujar');
-       var canvas = document.getElementById("test");
-       var context = canvas.getContext('2d');
-
-      domvas.toImage(document.getElementById("demo-container"), function() {
-        // Look ma, I just converted this element to an image and can now to funky stuff!
-        context.drawImage(this, 400, 400);
-      }); 
- }
-
-
+      
       function downloadtable3() 
       {
         var node = document.getElementById('chart');
 
-
-        domtoimage.toPng(node,{ quality: 0.95 })
+        domtoimage.toPng(node,{ quality: 0.50 })
             .then(function (dataUrl) {
                 var img = new Image();
                 img.src = dataUrl;
