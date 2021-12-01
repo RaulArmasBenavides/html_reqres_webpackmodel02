@@ -20,6 +20,3 @@ const populationData = [{
   arg: 2020,
   val: 7795000000,
 }];
-​
-
-export { populationData };

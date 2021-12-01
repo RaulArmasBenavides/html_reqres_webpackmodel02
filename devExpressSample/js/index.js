@@ -1,13 +1,14 @@
-let options = {
+$(() => {
+  $('#chart').dxChart({
     dataSource: populationData,
     legend: {
       visible: false,
     },
     series: {
-      type: 'bar',
+      type: 'Line',
     },
     argumentAxis: {
-      tickInterval: 10,
+      tickInterval: 60,
       label: {
         format: {
           type: 'decimal',
@@ -15,7 +16,5 @@ let options = {
       },
     },
     title: 'World Population by Decade',
-  };
-
-
-  new dxChart(document.getElementById('chart'), options);
+  });
+});
