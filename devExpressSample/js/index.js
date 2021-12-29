@@ -4,11 +4,17 @@ $(() => {
     legend: {
       visible: false,
     },
+    export: {
+      enabled: true,
+    },
     series: {
-      type: 'Line',
+      type: 'scatter',
+    },
+    loadingIndicator: {
+      enabled: true,
     },
     argumentAxis: {
-      tickInterval: 60,
+      tickInterval: 18,
       label: {
         format: {
           type: 'decimal',
