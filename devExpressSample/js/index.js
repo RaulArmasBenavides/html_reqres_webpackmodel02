@@ -8,7 +8,7 @@ $(() => {
       enabled: true,
     },
     series: {
-      type: 'scatter',
+      type: 'area',
     },
     loadingIndicator: {
       enabled: true,
