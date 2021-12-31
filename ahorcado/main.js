@@ -51,7 +51,7 @@ document.querySelector('#calcular').addEventListener('click',()=>
     }
 
     if(ok == false)
-    {  // alert(nro_intentos);
+    {   console.log('error' + nro_intentos);
         CambiarImagen(nro_intentos);
         if(nro_intentos >= MAX_ATTEMPTS){
             document.querySelector('#output').innerHTML = palabra;
@@ -62,6 +62,8 @@ document.querySelector('#calcular').addEventListener('click',()=>
     {
             document.querySelector('#output').innerHTML = palabraOculta;
             if (fin ==true){
+            let boton = document.querySelector('#calcular');
+            boton.disabled = true;
             //alert('GANASTE');
             }
     }
