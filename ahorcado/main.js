@@ -8,12 +8,14 @@ String.prototype.replaceAt = function (index,character)
 }
 
 //arreglos partidos políticos 
-const palabras = ['APRA','PPC','ACCIÓN POPULAR','FREPAP','FUERZA POPULAR','PARTIDO MORADO']
+const palabras = ['APRA','PPC','ACCION POPULAR','FREPAP','FUERZAPOPULAR','PARTIDO MORADO']
 
 const palabra = palabras[Math.floor(Math.random()*palabras.length)]
 let exito = false;
+let fin = false;
 let posicion = 0;
 let palabraOculta = palabra.replace(/./g,"_ ");
+console.log(palabra + "  "+ palabraOculta);
 
 
 document.querySelector('#output').innerHTML = palabraOculta;
@@ -29,56 +31,41 @@ document.getElementById("calcular").onclick = () => {
     else alert("Debe ingresar una letra en mayúscula");
   };
 
-
-  
 document.querySelector('#calcular').addEventListener('click',()=>
 {
-
     exito=false;
     nro_intentos++;
     const letra = document.querySelector('#letra').value;
-
-
-
-// if([...palabra].find(element => element === letra))
-// {
-//     exito = true;
-//     posicion = palabra.indexOf([...palabra].find(element => element === letra));
-//     alert(posicion);
-//     palabraOculta = palabraOculta.replaceAt(posicion*2 ,letra);
-//     document.querySelector('#output').innerHTML = palabraOculta;
-// }
-// else
-// {
-//     exito = false;
-// }
-
-
-
-
-
-for(const i in palabra)
-{
-    if(letra==palabra[i])
+    for(const i in palabra)
     {
-        palabraOculta = palabraOculta.replaceAt(i*2,letra);
-        ok = true;
-    }
-}
+        if(letra==palabra[i])
+        {
+            palabraOculta = palabraOculta.replaceAt(i*2,letra);
+            ok = true;
 
-if(ok == false)
-{  // alert(nro_intentos);
-    CambiarImagen(nro_intentos);
-    if(nro_intentos >= MAX_ATTEMPTS){
-        document.querySelector('#output').innerHTML = palabra;
-       // alert("PERDISTE EL JUEGO");
+            if(!palabraOculta.includes('_'))
+            {
+                fin = true;
+            }
+        }
     }
-}
-else
-{
-    document.querySelector('#output').innerHTML = palabraOculta;
-}
-});
+
+    if(ok == false)
+    {  // alert(nro_intentos);
+        CambiarImagen(nro_intentos);
+        if(nro_intentos >= MAX_ATTEMPTS){
+            document.querySelector('#output').innerHTML = palabra;
+        // alert("PERDISTE EL JUEGO");
+        }
+    }
+    else
+    {
+            document.querySelector('#output').innerHTML = palabraOculta;
+            if (fin ==true){
+            //alert('GANASTE');
+            }
+    }
+    });
 
 
 
