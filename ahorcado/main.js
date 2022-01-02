@@ -1,7 +1,7 @@
 //referencia : https://www.youtube.com/watch?v=mn07nxUXoPA
 let nro_intentos = 0;
 const MAX_ATTEMPTS= 7;
-let ok = false;
+
 String.prototype.replaceAt = function (index,character) 
 {
     return this.substr(0,index) + character + this.substr(index+character.length);
@@ -33,11 +33,14 @@ document.getElementById("calcular").onclick = () => {
 
 document.querySelector('#calcular').addEventListener('click',()=>
 {
+    let ok = false;
     exito=false;
-    nro_intentos++;
-    const letra = document.querySelector('#letra').value;
+    
+    let letra = document.querySelector('#letra').value;
+    console.log(letra);
     for(const i in palabra)
     {
+        console.log('evlauando ' + palabra[i]);
         if(letra==palabra[i])
         {
             palabraOculta = palabraOculta.replaceAt(i*2,letra);
@@ -51,19 +54,21 @@ document.querySelector('#calcular').addEventListener('click',()=>
     }
 
     if(ok == false)
-    {   console.log('error' + nro_intentos);
+    {   nro_intentos++;
+        console.log('error' + nro_intentos);
         CambiarImagen(nro_intentos);
-        if(nro_intentos >= MAX_ATTEMPTS){
-            document.querySelector('#output').innerHTML = palabra;
-        // alert("PERDISTE EL JUEGO");
+        if(nro_intentos >= MAX_ATTEMPTS)
+        {
+           document.querySelector('#output').innerHTML = palabra;
+           alert("PERDISTE EL JUEGO");
+           ProtegerBotones();
         }
     }
     else
     {
             document.querySelector('#output').innerHTML = palabraOculta;
             if (fin ==true){
-            let boton = document.querySelector('#calcular');
-            boton.disabled = true;
+             ProtegerBotones();
             //alert('GANASTE');
             }
     }
@@ -73,17 +78,23 @@ document.querySelector('#calcular').addEventListener('click',()=>
 
 function CambiarImagen(id_foto)
 {
+
     if(id_foto<MAX_ATTEMPTS)
     {
         let char_raiz = "./imgs/Ahorcado-";
         var imagen = document.getElementById("foto");
         char_raiz = char_raiz.concat(id_foto);
         imagen.src = char_raiz.concat(".png");
-       // alert('la imagen sera' + imagen.src);
+        //alert('la imagen sera' + imagen.src);
     }
 
 }
 
+
+const ProtegerBotones = () =>{
+    let boton = document.querySelector('#calcular');
+    boton.disabled = true;
+}
 
 
 
