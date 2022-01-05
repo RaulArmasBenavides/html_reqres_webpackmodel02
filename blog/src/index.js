@@ -6,37 +6,66 @@ import 'normalize.css';
 let btnweb = document.getElementById("btnweb");
 let btnapi = document.getElementById("btnapi");
 let btndes = document.getElementById("btndes");
+let btnmob = document.getElementById("btnmob");
+let btnall = document.getElementById("btnall");
+const showAllRepository =  () => {
+  toggle_visibility("api",false);
+  toggle_visibility("des",false);
+  toggle_visibility("mob",false);
+  toggle_visibility("web",false);
+};
 
-btnweb.addEventListener("click",()=> {
-    // Get the elements with class="column"
-   let elements = document.getElementsByClassName("row");
-   let elementsweb=   document.getElementsByClassName("web");
-   //hide
-   // elements.style.display = 'none';
-   hide(elements);
+btnall.addEventListener("click",()=> {
+  showAllRepository();
 });
 
+btnweb.addEventListener("click",()=> {
+  // ocultarBotones();
+  //elementsapi.hidden = true;
+  toggle_visibility("api",true);
+  toggle_visibility("des",true);
+  toggle_visibility("mob",true);
+  toggle_visibility("web",false);
+});
+ 
 btnapi.addEventListener("click",()=> {
-    // Get the elements with class="column"
-   let elements = document.getElementsByClassName("des");
-   console.log(elements);
-   let elementsapi=   document.getElementsByClassName("api");
-   console.log(elementsapi);
-   hide(elements);
-   show(elementsapi);
-   //hide
-   // elements.style.display = 'none';
-
+  toggle_visibility("des",true);
+  toggle_visibility("web",true);
+  toggle_visibility("mob",true);
+  toggle_visibility("api",false);
 });
 
 btndes.addEventListener("click",()=> {
-    // Get the elements with class="column"
-   let elements = document.getElementsByClassName("row");
-   document.getE
-   //hide
-   // elements.style.display = 'none';
-   hide(elements);
+  toggle_visibility("api",true);
+  toggle_visibility("web",true);
+  toggle_visibility("mob",true);
+  toggle_visibility("des",false);
 });
+
+btnmob.addEventListener("click",()=> {
+  toggle_visibility("api",true);
+  toggle_visibility("web",true);
+  toggle_visibility("des",true);
+  toggle_visibility("mob",false);
+});
+
+function toggle_visibility(id, aux) 
+{
+
+  var e = document.getElementsByClassName(id);
+  if(aux)
+  {
+    console.log(e);
+    hide(e);
+  }
+  else
+  {
+    console.log(e); 
+    show(e);
+  }
+   
+
+}
 
 
 //show
@@ -49,10 +78,10 @@ function hide (elements) {
     }
   }
 
-function show (elements, specifiedDisplay) {
+function show (elements) {
     elements = elements.length ? elements : [elements];
     for (var index = 0; index < elements.length; index++) {
-      elements[index].style.display = specifiedDisplay || 'block';
+      elements[index].style.display =  'block';
     }
   }
   // Usage:
