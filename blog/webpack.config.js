@@ -37,9 +37,9 @@ module.exports = {
             {
                 test: /\.html$/i,
                 loader: 'html-loader',
-               // options: {
-               // sources: false,                    
-               // },    
+                //options: {
+                //sources: false,                    
+                // },    averiguar para qué es esto 
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -59,6 +59,10 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: './src/index.html',
             filename: './index.html'
+        }),
+        new HtmlWebPackPlugin({
+            template: './src/about.html',
+            filename: './assets/about.html'
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

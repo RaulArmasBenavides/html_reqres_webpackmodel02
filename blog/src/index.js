@@ -8,12 +8,15 @@ let btnapi = document.getElementById("btnapi");
 let btndes = document.getElementById("btndes");
 let btnmob = document.getElementById("btnmob");
 let btnall = document.getElementById("btnall");
+
+
 const showAllRepository =  () => {
   toggle_visibility("api",false);
   toggle_visibility("des",false);
   toggle_visibility("mob",false);
   toggle_visibility("web",false);
 };
+
 
 btnall.addEventListener("click",()=> {
   showAllRepository();
@@ -118,7 +121,6 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
-
 
 
 
