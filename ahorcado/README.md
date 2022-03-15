@@ -1,2 +1,0 @@
-# javascripts
-javascripts models 
