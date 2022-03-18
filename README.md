@@ -1,8 +1,14 @@
-# javascripts
-javascripts models
+# Webpack Starter
 
+Este es el proyecto inicial para crear aplicaciones utilizando webpack.
 
+### Notas:
+Recuerden reconstruir los módulos de Node
+```
+npm install
+```
 
-
-
-reqres -> métodos https de consumo https://reqres.in
+Y para construir el build, recueren:
+```
+npm run build
+```
