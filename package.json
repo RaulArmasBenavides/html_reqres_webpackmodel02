@@ -1,5 +1,5 @@
 {
-  "name": "webpack-inicial",
+  "name": "html_reqres_webpackmodel02",
   "version": "1.0.0",
   "description": "Este es un cascaron de un proyecto de webpack",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "build:dev": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --open --port=8080"
   },
-  "author": "Fernando Herrera",
+  "author": "Raúl Armas Benavides",
   "license": "ISC",
   "devDependencies": {
     "file-loader": "^6.2.0",
