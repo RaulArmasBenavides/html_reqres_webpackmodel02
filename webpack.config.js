@@ -1,7 +1,7 @@
 const HtmlWebPackPlugin       = require('html-webpack-plugin'); 
 const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const OptimizeCssAssetsPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     mode: 'development',
     optimization: {
@@ -25,13 +25,11 @@ module.exports = {
                 ]
             },
             {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: { minimize: false }
-                    }
-                ]
+                test: /\.html$/i,
+                loader: 'html-loader',
+                options: {
+                sources: false,                    
+                },    
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -55,7 +53,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
             ignoreOrder: false
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+            { from: 'src/assets', to: 'assets/' },
+        ]}),
     ]
 
 }
