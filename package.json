@@ -11,6 +11,10 @@
   },
   "author": "Raúl Armas Benavides",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RaulArmasBenavides/javascripts.git"
+  },
   "devDependencies": {
     "css-minimizer-webpack-plugin": "^3.4.1",
     "file-loader": "^6.2.0",
