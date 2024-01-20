@@ -34,14 +34,10 @@ export const heroesCiclo = async () => {
     console.time('HeroesCiclo');
 
     // heroesPromesas.forEach( async(p) => console.log( await p ));
-
-
     for await( const heroe of heroesPromesas ) {
         console.log(heroe);
     }
-
     console.timeEnd('HeroesCiclo');
-
     // const heroes = await Promise.all( heroesPromesas );
     // heroes.forEach( heroe => console.log(heroe) );
 }
@@ -61,3 +57,7 @@ export const heroeIfAwait = async(id) => {
 
 
 
+heroesCiclo();
+
+ 
+heroeIfAwait('iron');

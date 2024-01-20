@@ -1,13 +1,10 @@
-import { heroesCiclo, heroeIfAwait } from './js/await';
+// import { heroesCiclo, heroeIfAwait } from './js/await';
 import {getInfo,CreateHero} from './js/promesas';
 
 
 import * as CRUD from './js/promesas';
 
-heroesCiclo();
 
- 
-heroeIfAwait('iron');
 getInfo();
 
 
