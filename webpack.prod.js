@@ -2,7 +2,7 @@ const HtmlWebPackPlugin       = require('html-webpack-plugin');
 const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
+const path = require('path');
 const templates = [
     { template: './src/index.html', filename: './index.html' , chunks: ['common','index'] },
     { template: './src/pages/await.html', filename: './await.html' , chunks: ['common','await'] },
@@ -31,7 +31,9 @@ module.exports = {
         minimizer: [ new OptimizeCssAssetsPlugin() ]
     },
     output: {
-        filename: 'main.[contentHash].js'
+        clean: true,
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
@@ -83,7 +85,7 @@ module.exports = {
     plugins: [
         ...htmlPlugins,
         new MiniCssExtractPlugin({
-            filename: '[name].[contentHash].css',
+            filename: '[name].css',
             ignoreOrder: false
         }),
         new CopyPlugin({

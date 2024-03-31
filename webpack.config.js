@@ -2,6 +2,7 @@ const HtmlWebPackPlugin       = require('html-webpack-plugin');
 const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
 const templates = [
     { template: './src/index.html', filename: './index.html' , chunks: ['common','index'] },
     { template: './src/pages/await.html', filename: './await.html' , chunks: ['common','await'] },
@@ -29,8 +30,20 @@ module.exports = {
     optimization: {
         minimizer: [ new OptimizeCssAssetsPlugin() ]
     },
+    output: {
+        clean: true,
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+    },
     module: {
         rules: [
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                use: [
+                    'babel-loader'
+                ]
+            },
             {
                 test: /\.css$/,
                 exclude: /styles\.css$/,
